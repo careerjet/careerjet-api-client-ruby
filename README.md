@@ -1,6 +1,6 @@
 # Careerjet RB
 
-It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API
+It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API.
 
 ## Installation
 
@@ -18,12 +18,13 @@ Or install it yourself as:
     
 ## Usage
 
-Example:
-
 ```ruby
 > Careerjet.search :locale => :en_US, :keywords => 'ruby', :page => 1
 => #<Careerjet::Mash hits=5704 jobs=[<..>] pages=286 response_time=0.0434670448303223 type="JOBS"> 
 ```
+
+You will get [Hashie::Mash](https://github.com/intridea/hashie#mash) as a response,
+so you can get all data via convenient methods:
 
 ```ruby
 > Careerjet.search(:locale => :en_US, :keywords => 'ruby', :page => 1).jobs.first
@@ -33,27 +34,27 @@ Example:
 
 ### Search Params
 
-`locale`: Locale of search, if locale not specified - using `:en_US`
+* `locale`: Locale of search, if locale not specified — using `:en_US`
 
-`keywords`: Keywords to search in job offers.
+* `keywords`: Keywords to search in job offers.
 
-`location`: Location to search job offers in.
+* `location`: Location to search job offers in.
 
-`sort`: Type of sort. Can be: `relevance` (default) - most relevant first, `date` - freshest offer first and `salary` - biggest salary first.
+* `sort`: Type of sort. Can be: `relevance` (default) — most relevant first, `date` — freshest offer first and `salary` — biggest salary first.
 
-`start_num`: Number of first offer returned in entire result space. Should be >= 1 and <= Number of hits.
+* `start_num`: Number of first offer returned in entire result space. Should be >= 1 and <= Number of hits.
 
-`pagesize`: Number of offers returned in one call.
+* `pagesize`: Number of offers returned in one call.
 
-`page`: Number of the asked page. Should be >=1. If this value is set, the eventually given `start_num` is overrided.
+* `page`: Number of the asked page. Should be >=1. If this value is set, the eventually given `start_num` is overrided.
 
-`contracttype`: Character code for contract type.`p` - permanent job, `c`- contract, `t`- temporary, `i`- training, `v`- voluntary, none - all contract types.
+* `contracttype`: Character code for contract type.`p` — permanent job, `c` — contract, `t` — temporary, `i` — training, `v` — voluntary, none — all contract types.
 
-`contractperiod`: Character code for contract work period. `f` - full time, `p` - part time, none - all work period.
+* `contractperiod`: Character code for contract work period. `f` — full time, `p` — part time, none — all work period.
 
+## Thanks
 
-
-Based on [careerjet](https://github.com/kostia/careerjet) gem from [kostia](https://github.com/kostia).
+This gem was inspired by [careerjet](https://github.com/kostia/careerjet) gem from [kostia](https://github.com/kostia).
 
 ## License
 
