@@ -2,7 +2,7 @@ module Careerjet
   DOMAIN = "http://public.api.careerjet.net"
 
   ALLOWED_FIELDS = [:keywords, :location, :sort, :start_num, :pagesize, :page, 
-                    :contracttype, :contractperiod, :locale]
+                    :contracttype, :contractperiod, :locale_code]
 
   LOCALES = {
     :cs_CZ => 'http://www.careerjet.cz'        ,

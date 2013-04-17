@@ -6,7 +6,7 @@ require 'careerjet/version'
 
 module Careerjet
 
-  def self.search(params = {})
+  def self.search(params)
     results = Careerjet::Client.new(params).search
 
     Careerjet::Mash.from_json results

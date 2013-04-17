@@ -6,15 +6,15 @@ module Careerjet
     attr_accessor :params
 
     def initialize(params)
-      @params = params
+      @params = params || {}
 
       set_locale
       check_params
     end
 
     def check_params
-      unless Careerjet::LOCALES.keys.include?(@params[:locale])
-        raise Careerjet::UnknownLocale, "Not supported locale '#{@params[:locale]}'" 
+      unless Careerjet::LOCALES.keys.include?(@params[:locale_code])
+        raise Careerjet::UnknownLocale, "Not supported locale '#{@params[:locale_code]}'" 
       end
 
       @params.each_key do |k|
@@ -32,7 +32,8 @@ module Careerjet
     end
 
     def set_locale
-      @params[:locale] ||= :en_US
+      @params[:locale_code] = @params[:locale_code] || @params[:locale] || :en_US
+      @params.delete(:locale)
     end
 
     def raise_errors response
