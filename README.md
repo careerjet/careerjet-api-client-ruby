@@ -51,9 +51,13 @@ Example:
 
 `contractperiod`: Character code for contract work period. `f` - full time, `p` - part time, none - all work period.
 
+
+
+Based on [careerjet](https://github.com/kostia/careerjet) gem from [kostia](https://github.com/kostia).
+
 ## License
 
-Copyright (c) 2013 Sergey Efremov, Kostiantyn Kahanskyi
+Copyright (c) 2012-2013 Sergey Efremov, Kostiantyn Kahanskyi
 
 MIT License
 
