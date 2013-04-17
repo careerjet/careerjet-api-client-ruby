@@ -21,9 +21,14 @@ Or install it yourself as:
 Example:
 
 ```ruby
-Careerjet.search :locale => :en_US, :keywords => 'ruby', :page => 1
+> Careerjet.search :locale => :en_US, :keywords => 'ruby', :page => 1
+=> #<Careerjet::Mash hits=5704 jobs=[<..>] pages=286 response_time=0.0434670448303223 type="JOBS"> 
 ```
 
+```ruby
+> Careerjet.search(:locale => :en_US, :keywords => 'ruby', :page => 1).jobs.first
+#<Careerjet::Mash company="Company Name" date="Wed, 17 Apr 2013 00:00:00 GMT" description=" <..>" url="http://..."> 
+```
 
 
 ### Search Params
