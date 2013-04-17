@@ -12,6 +12,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = %w[lib]
   gem.add_dependency 'multi_json'
   gem.add_dependency 'rest-client'
+  gem.add_dependency 'hashie'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
