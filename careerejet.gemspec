@@ -1,13 +1,13 @@
 require File.expand_path('../lib/careerjet/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name = 'careerjet'
+  gem.name = 'careerjet-rb'
   gem.version = Careerjet.version
-  gem.description = "Ruby client for Careerjet's API"
-  gem.summary = "Ruby client for Careerjet's API"
-  gem.homepage = 'https://github.com/kostia/careerjet'
-  gem.authors = ['Kostiantyn Kahanskyi']
-  gem.email = %w[kostiantyn.kahanskyi@googlemail.com]
+  gem.description = "Ruby wrapper for Careerjet's API"
+  gem.summary = "Ruby wrapper for Careerjet's API"
+  gem.homepage = 'https://github.com/ResumUP/careerjet-rb'
+  gem.authors = ['Sergey Efremov', 'Kostiantyn Kahanskyi']
+  gem.email = %w[efremov.sergey@gmail.com kostiantyn.kahanskyi@googlemail.com]
   gem.files = `git ls-files`.split("\n")
   gem.require_paths = %w[lib]
   gem.add_dependency 'multi_json'

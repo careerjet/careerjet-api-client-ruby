@@ -18,8 +18,7 @@ module Careerjet
       end
 
       @params.each_key do |k|
-        unless [:keywords, :location, :sort, :start_num, :pagesize, :page, :contracttype,
-            :contractperiod, :locale].include? k
+        unless Careerjet::ALLOWED_FIELDS.include? k
           raise InvalidParam, "Unknown param key `#{k}'"
         end
       end
