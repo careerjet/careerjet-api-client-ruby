@@ -6,7 +6,7 @@ It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API
 
 Add this line to your application's Gemfile:
 
-    gem 'careerjet-rb'
+    gem 'careerjet-rb', :require => "careerjet"
 
 And then execute:
 
