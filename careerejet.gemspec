@@ -8,6 +8,7 @@ Gem::Specification.new do |gem|
   gem.homepage = 'https://github.com/ResumUP/careerjet-rb'
   gem.authors = ['Sergey Efremov', 'Kostiantyn Kahanskyi']
   gem.email = %w[efremov.sergey@gmail.com kostiantyn.kahanskyi@googlemail.com]
+  gem.license = 'MIT'
   gem.files = `git ls-files`.split("\n")
   gem.require_paths = %w[lib]
   gem.add_dependency 'multi_json'
