@@ -1,22 +1,34 @@
-# Ruby client for Careerjet's API
+# Careerjet RB
 
-[![Build Status](https://secure.travis-ci.org/kostia/careerjet.png?branch=master)](http://travis-ci.org/kostia/careerjet)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/kostia/careerjet)
+It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API
 
 ## Installation
 
-```ruby
-# Gemfile
-gem 'careerjet'
-```
+Add this line to your application's Gemfile:
 
+    gem 'careerjet-rb'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install careerjet-rb
+    
 ## Usage
 
+Example:
+
 ```ruby
-Careerjet.search :en_US, :keywords => 'ruby', :page => 1
+Careerjet.search :locale => :en_US, :keywords => 'ruby', :page => 1
 ```
 
-### Params
+
+
+### Search Params
+
+`locale`: Locale of search, if locale not specified - using `:en_US`
 
 `keywords`: Keywords to search in job offers.
 
@@ -36,7 +48,7 @@ Careerjet.search :en_US, :keywords => 'ruby', :page => 1
 
 ## License
 
-Copyright (c) 2012 Kostiantyn Kahanskyi
+Copyright (c) 2013 Sergey Efremov, Kostiantyn Kahanskyi
 
 MIT License
 
