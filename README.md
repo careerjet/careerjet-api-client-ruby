@@ -132,7 +132,7 @@ This gem was inspired by [careerjet](https://github.com/kostia/careerjet) gem fr
 
 ## License
 
-Copyright (c) 2012-2013 Sergey Efremov, Kostiantyn Kahanskyi
+Copyright (c) 2012-2013 Sergey Efremov, Kostiantyn Kahanskyi, Careerjet Ltd
 
 MIT License
 
