@@ -1,13 +1,13 @@
 require File.expand_path('../lib/careerjet/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name = 'careerjet-rb'
+  gem.name = 'careerjet-api-client-ruby'
   gem.version = Careerjet.version
   gem.description = "Ruby wrapper for Careerjet's API"
   gem.summary = "Ruby wrapper for Careerjet's API"
-  gem.homepage = 'https://github.com/ResumUP/careerjet-rb'
-  gem.authors = ['Sergey Efremov', 'Kostiantyn Kahanskyi']
-  gem.email = %w[efremov.sergey@gmail.com kostiantyn.kahanskyi@googlemail.com]
+  gem.homepage = 'https://github.com/careerjet/careerjet-api-client-ruby'
+  gem.authors = ['Sergey Efremov', 'Kostiantyn Kahanskyi','Rohit Deshmukh']
+  gem.email = %w[efremov.sergey@gmail.com kostiantyn.kahanskyi@googlemail.com,'rohit@careerjet.com']
   gem.license = 'MIT'
   gem.files = `git ls-files`.split("\n")
   gem.require_paths = %w[lib]
