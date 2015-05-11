@@ -46,7 +46,7 @@ module Careerjet
     end
 
     def set_locale
-      @params[:locale_code] = @params[:locale_code] || @params[:locale] || :en_US
+      @params[:locale_code] = @params[:locale_code] || @params[:locale] || :en_GB
       @params.delete(:locale)
     end
 
