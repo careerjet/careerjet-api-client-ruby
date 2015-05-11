@@ -1,4 +1,4 @@
-# Careerjet RB
+# Careerjet API Client Ruby
 
 It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API.
 
