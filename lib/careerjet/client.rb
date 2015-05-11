@@ -13,6 +13,7 @@ module Careerjet
     end
 
     def check_params
+
       unless Careerjet::LOCALES.keys.include?(@params[:locale_code])
         raise Careerjet::UnknownLocale, "Not supported locale '#{@params[:locale_code]}'" 
       end
@@ -22,6 +23,19 @@ module Careerjet
           raise InvalidParam, "Unknown param key `#{k}'"
         end
       end
+
+      unless @params[:affid]
+        raise MandatoryParamMissing,"Mandatory param affid missing"
+      end
+
+      unless @params[:user_ip]
+        raise MandatoryParamMissing,"Mandatory param user_ip missing"
+      end
+
+      unless @params[:user_agent]
+        raise MandatoryParamMissing,"Mandatory param user_agent missing"
+      end
+
     end
 
     def search
