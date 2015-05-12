@@ -6,7 +6,7 @@ It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API.
 
 Add this line to your application's Gemfile:
 
-    gem 'careerjet-api-client', :require => "careerjet"
+    gem 'careerjet-api-client', :require => "careerjet/api_client"
 
 And then execute:
 
@@ -19,7 +19,8 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-> Careerjet.search :locale => :en_US, :keywords => 'ruby', :page => 1
+> cj_api_client = Careerjet::APIClient.new(:locale=> :es_ES) 
+> cj_api_client.search(:affid=>'213e213hd12344552',:user_ip=>'192.168.0.40',:user_agent=>'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0');
 => #<Careerjet::Mash hits=5704 jobs=[<..>] pages=286 response_time=0.0434670448303223 type="JOBS"> 
 ```
 
@@ -27,7 +28,7 @@ You will get [Hashie::Mash](https://github.com/intridea/hashie#mash) as a respon
 so you can get all data via convenient methods:
 
 ```ruby
-> Careerjet.search(:locale => :en_US, :keywords => 'ruby', :page => 1).jobs.first
+> cj_api_client.search(:affid=>'213e213hd12344552',:user_ip=>'192.168.0.40',:user_agent=>'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0').jobs.first
 #<Careerjet::Mash company="Company Name" date="Wed, 17 Apr 2013 00:00:00 GMT" description=" <..>" url="http://..."> 
 ```
 
