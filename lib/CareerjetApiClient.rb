@@ -12,8 +12,8 @@ class CareerjetApiClient
     @client = Careerjet::Client.new(params) 
   end    
 
-  def search(params)
-    results = @client.search
+  def search(search_params)
+    results = @client.search(search_params)
     Careerjet::Mash.from_json results
   end
 end

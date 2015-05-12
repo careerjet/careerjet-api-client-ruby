@@ -3,7 +3,7 @@ require 'rest_client'
 module Careerjet
   class Client
 
-    attr_accessor :params
+    attr_accessor :params 
 
     def initialize(params)
       @params = params || {}
@@ -30,8 +30,14 @@ module Careerjet
       response.body
     end
 
-    def check_search_param(search_params)
+    def check_search_params(search_params)
       @search_params = search_params || {}
+
+      #set search locale
+      @search_params[:locale_code] = @search_params[:locale_code] || @search_params[:locale] || @params[:locale_code]
+      @search_params.delete(:locale)
+
+
       @search_params.each_key do |k|
         unless Careerjet::ALLOWED_FIELDS.include? k
           raise InvalidParam, "Unknown param key `#{k}'"
