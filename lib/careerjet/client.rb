@@ -9,40 +9,47 @@ module Careerjet
       @params = params || {}
 
       set_locale
-      check_params
+      check_locale_param
     end
 
-    def check_params
+    def check_locale_param
 
       unless Careerjet::LOCALES.keys.include?(@params[:locale_code])
         raise Careerjet::UnknownLocale, "Not supported locale '#{@params[:locale_code]}'" 
       end
 
-      @params.each_key do |k|
+    end
+
+    def search(search_params)
+      @search_params = search_params || {}
+      check_search_params(search_params)
+      
+      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params
+      raise_errors response
+
+      response.body
+    end
+
+    def check_search_param(search_params)
+      @search_params = search_params || {}
+      @search_params.each_key do |k|
         unless Careerjet::ALLOWED_FIELDS.include? k
           raise InvalidParam, "Unknown param key `#{k}'"
         end
       end
 
-      unless @params[:affid]
+      unless @search_params[:affid]
         raise MandatoryParamMissing,"Mandatory param affid missing"
       end
 
-      unless @params[:user_ip]
+      unless @search_params[:user_ip]
         raise MandatoryParamMissing,"Mandatory param user_ip missing"
       end
 
-      unless @params[:user_agent]
+      unless @search_params[:user_agent]
         raise MandatoryParamMissing,"Mandatory param user_agent missing"
       end
 
-    end
-
-    def search
-      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @params
-      raise_errors response
-
-      response.body
     end
 
     def set_locale
