@@ -15,15 +15,19 @@ describe Careerjet::APIClient do
   end
 
   it 'should raise appropriate error on unknown locale' do
-    lambda do
-      careerjet_api_client = Careerjet::APIClient.new(:locale => :foo_BAR);
-    end.should raise_error(Careerjet::UnknownLocale)
+    expect(
+      lambda do
+        careerjet_api_client = Careerjet::APIClient.new(:locale => :foo_BAR);
+      end
+    ).to raise_error(Careerjet::UnknownLocale)
   end
 
   it 'should validate given params' do
-    lambda do
-      careerjet_api_client = Careerjet::APIClient.new(:locale => :en_GB);
-      careerjet_api_client.search(:locale => :en_US, :keywords => 'rails', :foo => 'bar')
-    end.should raise_error(Careerjet::InvalidParam)
+    expect(
+      lambda do
+        careerjet_api_client = Careerjet::APIClient.new(:locale => :en_GB);
+        careerjet_api_client.search(:locale => :en_US, :keywords => 'rails', :foo => 'bar')
+      end
+    ).to raise_error(Careerjet::InvalidParam)
   end
 end
