@@ -23,8 +23,8 @@ module Careerjet
     def search(search_params)
       @search_params = search_params || {}
       check_search_params(search_params)
-      
-      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params
+      @user_agent = 'careerjet-api-client-v3.0.0-ruby-v1.9.3'
+      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params,:user_agent => @user_agent
       raise_errors response
 
       response.body
