@@ -6,14 +6,14 @@ require 'careerjet/version'
 
 class CareerjetApiClient
 
-  attr_accessor :client
+  attr_accessor :careerjet_client
 
   def initialize(params)
-    @client = Careerjet::Client.new(params) 
+    @careerjet_client = Careerjet::Client.new(params) 
   end    
 
   def search(search_params)
-    results = @client.search(search_params)
+    results = @careerjet_client.search(search_params)
     Careerjet::Mash.from_json results
   end
 end
