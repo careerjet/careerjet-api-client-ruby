@@ -7,7 +7,6 @@ Gem::Specification.new do |gem|
   gem.summary = "Ruby wrapper for Careerjet's API"
   gem.homepage = 'https://github.com/careerjet/careerjet-api-client-ruby'
   gem.authors = ['Sergey Efremov', 'Kostiantyn Kahanskyi','Careerjet']
-  gem.email = %w[efremov.sergey@gmail.com kostiantyn.kahanskyi@googlemail.com thomas@careerjet.com]
   gem.license = 'MIT'
   gem.files = `git ls-files`.split("\n")
   gem.require_paths = %w[lib]
