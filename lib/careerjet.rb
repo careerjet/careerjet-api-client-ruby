@@ -1,2 +1,2 @@
-class Careerjet
+module Careerjet
 end
