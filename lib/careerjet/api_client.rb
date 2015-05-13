@@ -7,7 +7,7 @@ module Careerjet
   class APIClient 
     def initialize(params)
       @params = params || {}
-      set_locale
+      init_locale
       check_locale_param
     end    
   
@@ -36,24 +36,28 @@ module Careerjet
     
       @search_params.each_key do |k|
         unless Careerjet::ALLOWED_FIELDS.include? k
-          raise InvalidParam, "Unknown param key `#{k}'"
+          raise InvalidParam, "Unknown param key '#{k}'"
         end
       end
     
       unless @search_params[:affid]
-        raise MandatoryParamMissing,"Mandatory param affid missing"
+        raise MandatoryParamMissing,"Mandatory param 'affid' missing"
       end
     
       unless @search_params[:user_ip]
-        raise MandatoryParamMissing,"Mandatory param user_ip missing"
+        raise MandatoryParamMissing,"Mandatory param 'user_ip' missing"
       end
     
       unless @search_params[:user_agent]
-        raise MandatoryParamMissing,"Mandatory param user_agent missing"
+        raise MandatoryParamMissing,"Mandatory param 'user_agent' missing"
+      end
+    
+      unless @search_params[:url]
+        raise MandatoryParamMissing,"Mandatory param 'url' missing"
       end
     end
     
-    def set_locale
+    def init_locale
       @params[:locale_code] = @params[:locale_code] || @params[:locale] || :en_GB
       @params.delete(:locale)
     end
