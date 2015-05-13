@@ -1,10 +1,8 @@
 module Careerjet
   DOMAIN = "http://public.api.careerjet.net"
 
-  MANDATORY_FIELDS = [:affid,:user_ip,:user_agent]
-
   ALLOWED_FIELDS = [:keywords, :location, :sort, :start_num, :pagesize, :page, 
-                    :contracttype, :contractperiod, :locale_code,:affid,:user_ip,:user_agent]
+                    :contracttype, :contractperiod, :locale_code,:affid,:user_ip,:user_agent,:url]
 
   LOCALES = {
     :cs_CZ  => 'http://www.careerjet.cz'                  ,
