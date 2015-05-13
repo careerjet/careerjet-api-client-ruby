@@ -38,6 +38,7 @@ so you can get all data via convenient methods:
 * `affid`      : Affiliate ID provided by Careerjet. Requires to open a Careerjet partner account (http://www.careerjet.com/partners/).
 * `user_ip`    : IP address of the end-user to whom the search results will be displayed.  
 * `user_agent` : User agent of the end-user's browser.
+* `url`        : URL of page that will display the search results
 
 ### Optional Search Params 
 
