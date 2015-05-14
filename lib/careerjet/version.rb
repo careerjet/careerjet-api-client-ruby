@@ -1,7 +1,7 @@
 module Careerjet
   class APIClient
     def self.version
-      '3.0.0'
+      '3.1.0'
     end
   end
 end

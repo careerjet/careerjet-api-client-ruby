@@ -20,7 +20,8 @@ module Careerjet
     def search(search_params)
       @search_params = search_params || {}
       check_search_params(search_params)
-      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params,:user_agent => 'careerjet-api-client-v' + Careerjet::APIClient.version + '-ruby-v' + RUBY_VERSION
+      referer = @search_params.delete(:url)
+      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params,:user_agent => 'careerjet-api-client-v' + Careerjet::APIClient.version + '-ruby-v' + RUBY_VERSION,:referer => referer
       raise_errors response
     
       results = response.body
