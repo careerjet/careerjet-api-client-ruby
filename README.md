@@ -60,7 +60,8 @@ so you can get all data via convenient methods:
 
 * `locale`: Locale of search, if locale not specified — using `:en_US`
   supported locale
-```
+
+```ruby 
     :cs_CZ  => 'http://www.careerjet.cz'                  ,
     :da_DK  => 'http://www.careerjet.dk'                  ,
     :de_AT  => 'http://www.careerjet.at'                  ,
@@ -129,7 +130,6 @@ so you can get all data via convenient methods:
     :uk_UA  => 'http://www.careerjet.ua'                  ,
     :vi_VN  => 'http://www.careerjet.com.vn'              ,
     :zh_CN  => 'http://www.careerjet.cn'                  ,
-
 ```
 
 
