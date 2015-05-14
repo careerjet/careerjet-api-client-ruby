@@ -3,8 +3,8 @@ require File.expand_path('../lib/careerjet/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name = 'careerjet-api-client'
   gem.version = Careerjet::APIClient.version
-  gem.description = "Ruby wrapper for Careerjet's API"
-  gem.summary = "Ruby wrapper for Careerjet's API"
+  gem.description = "Official Ruby interface to Careerjet's public search API"
+  gem.summary = "Official Ruby interface to Careerjet's public search API"
   gem.homepage = 'https://github.com/careerjet/careerjet-api-client-ruby'
   gem.authors = ['Sergey Efremov', 'Kostiantyn Kahanskyi','Careerjet']
   gem.license = 'MIT'

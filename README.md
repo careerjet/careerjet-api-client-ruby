@@ -157,6 +157,17 @@ Available locale codes are:
     :zh_CN  => 'http://www.careerjet.cn'                  ,
 ```
 
+## Running the API client in Sinatra
+
+In order to circumvent a bug when running the API client within Sinatra, you
+need to tell tell Sinatra to skip the automatic Rack detection by doing:
+
+```ruby
+set :server, 'webrick'
+```
+
+You can find more information on this by Googling 'sinatra httpclient'.
+
 
 ## Thanks
 
