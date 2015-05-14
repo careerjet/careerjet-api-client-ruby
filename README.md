@@ -1,35 +1,52 @@
 # Careerjet API Client Ruby
 
-It's ruby wrapper for [Careerjet](http://www.careerjet.com)'s API.
+This is the ruby client for [Careerjet](http://www.careerjet.com)'s public search API.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the following line to your application's Gemfile:
 
     gem 'careerjet-api-client', :require => "careerjet/api_client"
 
-And then execute:
+and then execute:
 
     $ bundle
 
-Or install it yourself as:
+Alternatively install it yourself:
 
     $ gem install careerjet-api-client
     
 ## Usage
 
 ```ruby
-> cj_api_client = Careerjet::APIClient.new(:locale=> :es_ES) 
-> cj_api_client.search(:affid=>'213e213hd12344552',:user_ip=>'192.168.0.40',:user_agent=>'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0');
+> cj_api_client = Careerjet::APIClient.new(:locale=> :en_GB)
+>
+> cj_api_client.search(
+>     :keywords   => 'ruby',
+>     :location   => 'london',
+>     :affid      => '213e213hd12344552',
+>     :user_ip    => '11.22.33.44',
+>     :user_agent => 'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0',
+>     :url        => 'http://www.example.com/jobsearch?q=ruby&l=london'
+> )
+>
 => #<Careerjet::Mash hits=5704 jobs=[<..>] pages=286 response_time=0.0434670448303223 type="JOBS"> 
 ```
 
-You will get [Hashie::Mash](https://github.com/intridea/hashie#mash) as a response,
-so you can get all data via convenient methods:
+You will get a [Hashie::Mash](https://github.com/intridea/hashie#mash) object as a response,
+so you will be able to access the the data through convenient methods:
 
 ```ruby
-> cj_api_client.search(:affid=>'213e213hd12344552',:user_ip=>'192.168.0.40',:user_agent=>'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0').jobs.first
-#<Careerjet::Mash company="Company Name" date="Wed, 17 Apr 2013 00:00:00 GMT" description=" <..>" url="http://..."> 
+> cj_api_client.search(
+>     :keywords   => 'ruby',
+>     :location   => 'london',
+>     :affid      => '213e213hd12344552',
+>     :user_ip    => '11.22.33.44',
+>     :user_agent => 'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0',
+>     :url        => 'http://www.example.com/jobsearch?q=ruby&l=london'
+> ).jobs.first
+>
+=> #<Careerjet::Mash company="Company Name" date="Wed, 17 Apr 2013 00:00:00 GMT" description=" <..>" url="http://..."> 
 ```
 
 
@@ -40,26 +57,34 @@ so you can get all data via convenient methods:
 * `user_agent` : User agent of the end-user's browser.
 * `url`        : URL of page that will display the search results
 
-### Optional Search Params 
+### Search Params
 
-* `keywords`: Keywords to search in job offers.
+Please note that each parameter is optional.
 
-* `location`: Location to search job offers in.
+* `keywords`: Keywords to match the title, content or company name of a job offer
 
-* `sort`: Type of sort. Can be: `relevance` (default) — most relevant first, `date` — freshest offer first and `salary` — biggest salary first.
+* `location`: Location of requested jobs
 
-* `start_num`: Number of first offer returned in entire result space. Should be >= 1 and <= Number of hits.
+* `sort`: Sort type. This can be: `relevance` (default) — sorted by decreasing relevancy, `date` — sorted by decreasing date and `salary` — sorted by decreasing salary.
 
-* `pagesize`: Number of offers returned in one call.
+* `start_num`: Position of returned job postings within the entire result space. Should be >= 1 and <= Number of hits.
 
-* `page`: Number of the asked page. Should be >=1. If this value is set, the eventually given `start_num` is overrided.
+* `pagesize`: Number of jobs returned in one call.
 
-* `contracttype`: Character code for contract type.`p` — permanent job, `c` — contract, `t` — temporary, `i` — training, `v` — voluntary, none — all contract types.
+* `page`: Page number of returned jobs within the entire result space. Should be >=1. If this value is set, it overrides `start_num`.
 
-* `contractperiod`: Character code for contract work period. `f` — full time, `p` — part time, none — all work period.
+* `contracttype`: Selected contract type.`p` — permanent job, `c` — contract, `t` — temporary, `i` — training, `v` — voluntary, none — all contract types.
 
-* `locale`: Locale of search, if locale not specified — using `:en_US`
-  supported locale
+* `contractperiod`: Selected contract period. `f` — full time, `p` — part time, none — all contract periods.
+
+### Locale code
+
+The locale code needs to be supplied in the contructor of the API client. It defines the default location as well as the language in
+which the search results are returned. Each locale corresponds to a Careerjet site.
+
+The default is 'en_US'.
+
+Available locale codes are:
 
 ```ruby 
     :cs_CZ  => 'http://www.careerjet.cz'                  ,
@@ -71,7 +96,7 @@ so you can get all data via convenient methods:
     :en_AU  => 'http://www.careerjet.com.au'              ,
     :en_BD  => 'http://www.careerjet.com.bd'              ,
     :en_CA  => 'http://www.careerjet.ca'                  ,
-    :en_CN  => 'http://en.careerjet.cn'                   ,
+    :en_CN  => 'http://www.careerjet.com.cn'              ,
     :en_HK  => 'http://www.careerjet.hk'                  ,
     :en_IE  => 'http://www.careerjet.ie'                  ,
     :en_IN  => 'http://www.careerjet.co.in'               ,
@@ -106,7 +131,7 @@ so you can get all data via convenient methods:
     :es_UY  => 'http://www.opcionempleo.com.uy'           ,
     :es_VE  => 'http://www.opcionempleo.com.ve'           ,
     :fi_FI  => 'http://www.careerjet.fi'                  ,
-    :fr_CA  => 'http://fr.careerjet.ca'                   ,
+    :fr_CA  => 'http://www.option-carriere.ca'            ,
     :fr_BE  => 'http://www.optioncarriere.be'             ,
     :fr_CH  => 'http://www.optioncarriere.ch'             ,
     :fr_FR  => 'http://www.optioncarriere.com'            ,
@@ -135,11 +160,16 @@ so you can get all data via convenient methods:
 
 ## Thanks
 
-This gem was inspired by [careerjet](https://github.com/kostia/careerjet) gem from [kostia](https://github.com/kostia).
+This gem was inspired by the [careerjet](https://github.com/kostia/careerjet) gem coded by [Kostiantyn Kahanskyi](https://github.com/kostia)
+and the [careerjet-rb](https://github.com/ResumUP/careerjet-rb) gem coded by [Sergey Efremov](https://github.com/EvilFaeton).
+
+Many thanks to both.
 
 ## License
 
-Copyright (c) 2012-2013 Sergey Efremov, Kostiantyn Kahanskyi, Careerjet Ltd
+Copyright (c) 2012-2014 Sergey Efremov, Kostiantyn Kahanskyi
+
+Copyright (c) 2015 Careerjet Ltd
 
 MIT License
 
