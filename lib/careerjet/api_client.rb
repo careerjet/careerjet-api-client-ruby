@@ -3,6 +3,7 @@ require 'careerjet/mash'
 require 'careerjet/version'
 require 'rest_client'
 require 'careerjet/constants'
+require 'uri'
 module Careerjet
   class APIClient 
     def initialize(params)
@@ -20,8 +21,11 @@ module Careerjet
     def search(search_params)
       @search_params = search_params || {}
       check_search_params(search_params)
-      referer = @search_params.delete(:url)
-      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params,:user_agent => 'careerjet-api-client-v' + Careerjet::APIClient.version + '-ruby-v' + RUBY_VERSION,:referer => referer
+      referer_uri = URI.parse(search_params.delete(:url))
+      unless referer_uri.kind_of?(URI::HTTP) or referer_uri.kind_of?(URI::HTTPS)
+        raise URI::InvalidURIError, "Invalid param url #{referer_uri}"
+      end
+      response  = RestClient.get [Careerjet::DOMAIN, 'search'].join('/'),  params: @search_params,:user_agent => 'careerjet-api-client-v' + Careerjet::APIClient.version + '-ruby-v' + RUBY_VERSION,:referer => referer_uri
       raise_errors response
     
       results = response.body
