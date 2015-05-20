@@ -82,7 +82,7 @@ Please note that each parameter is optional.
 The locale code needs to be supplied in the contructor of the API client. It defines the default location as well as the language in
 which the search results are returned. Each locale corresponds to a Careerjet site.
 
-The default is 'en_US'.
+The default is 'en_GB'.
 
 Available locale codes are:
 
