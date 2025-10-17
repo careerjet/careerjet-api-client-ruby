@@ -5,3 +5,4 @@ module Careerjet
     end
   end
 end
+
